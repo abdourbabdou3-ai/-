@@ -1,0 +1,324 @@
+/* Additional 3D Effects and Animations */
+
+/* Floating Animation */
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotateX(0deg); }
+    50% { transform: translateY(-10px) rotateX(2deg); }
+}
+
+@keyframes float-reverse {
+    0%, 100% { transform: translateY(0px) rotateX(0deg); }
+    50% { transform: translateY(10px) rotateX(-2deg); }
+}
+
+/* 3D Card Hover Effect */
+.card-3d {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card-3d:hover {
+    transform: perspective(1000px) rotateY(5deg) rotateX(2deg) translateZ(20px);
+    box-shadow: 
+        0 20px 40px rgba(255, 215, 0, 0.3),
+        0 0 60px rgba(255, 215, 0, 0.1);
+}
+
+/* Golden Glow Effect */
+.golden-glow {
+    position: relative;
+}
+
+.golden-glow::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700);
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    animation: glow 2s ease-in-out infinite;
+}
+
+.golden-glow:hover::before {
+    opacity: 1;
+}
+
+@keyframes glow {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+/* 3D Button Effect */
+.btn-3d {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: all 0.3s ease;
+}
+
+.btn-3d::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #B8860B 0%, #8B6914 100%);
+    border-radius: inherit;
+    transform: translateZ(-10px);
+    z-index: -1;
+    transition: transform 0.3s ease;
+}
+
+.btn-3d:hover {
+    transform: translateZ(10px) rotateX(5deg);
+}
+
+.btn-3d:hover::before {
+    transform: translateZ(-20px) rotateX(-5deg);
+}
+
+/* Parallax Effect */
+.parallax-container {
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+}
+
+.parallax-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform-style: preserve-3d;
+}
+
+.parallax-bg {
+    transform: translateZ(-100px) scale(1.1);
+}
+
+.parallax-mid {
+    transform: translateZ(-50px) scale(1.05);
+}
+
+.parallax-front {
+    transform: translateZ(0px);
+}
+
+/* 3D Text Effect */
+.text-3d {
+    text-shadow: 
+        0 1px 0 #B8860B,
+        0 2px 0 #B8860B,
+        0 3px 0 #B8860B,
+        0 4px 0 #B8860B,
+        0 5px 0 #B8860B,
+        0 6px 0 #B8860B,
+        0 7px 0 #B8860B,
+        0 8px 0 #B8860B,
+        0 9px 0 #B8860B,
+        0 10px 0 #B8860B,
+        0 11px 0 #B8860B,
+        0 12px 0 #B8860B,
+        0 20px 30px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+}
+
+.text-3d:hover {
+    text-shadow: 
+        0 1px 0 #FFA500,
+        0 2px 0 #FFA500,
+        0 3px 0 #FFA500,
+        0 4px 0 #FFA500,
+        0 5px 0 #FFA500,
+        0 6px 0 #FFA500,
+        0 7px 0 #FFA500,
+        0 8px 0 #FFA500,
+        0 9px 0 #FFA500,
+        0 10px 0 #FFA500,
+        0 11px 0 #FFA500,
+        0 12px 0 #FFA500,
+        0 20px 30px rgba(255, 215, 0, 0.8);
+}
+
+/* Rotating Elements */
+.rotate-3d {
+    animation: rotate3d 10s linear infinite;
+    transform-style: preserve-3d;
+}
+
+@keyframes rotate3d {
+    0% { transform: rotateY(0deg) rotateX(0deg); }
+    25% { transform: rotateY(90deg) rotateX(0deg); }
+    50% { transform: rotateY(180deg) rotateX(0deg); }
+    75% { transform: rotateY(270deg) rotateX(0deg); }
+    100% { transform: rotateY(360deg) rotateX(0deg); }
+}
+
+/* Perspective Container */
+.perspective-container {
+    perspective: 1000px;
+    perspective-origin: center center;
+}
+
+/* Floating Elements with Different Speeds */
+.float-slow {
+    animation: float 6s ease-in-out infinite;
+}
+
+.float-medium {
+    animation: float 4s ease-in-out infinite;
+}
+
+.float-fast {
+    animation: float 2s ease-in-out infinite;
+}
+
+.float-reverse-slow {
+    animation: float-reverse 6s ease-in-out infinite;
+}
+
+.float-reverse-medium {
+    animation: float-reverse 4s ease-in-out infinite;
+}
+
+.float-reverse-fast {
+    animation: float-reverse 2s ease-in-out infinite;
+}
+
+/* 3D Hover Gallery */
+.gallery-3d {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 40px 0;
+}
+
+.gallery-item-3d {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+}
+
+.gallery-item-3d:hover {
+    transform: 
+        perspective(1000px) 
+        rotateY(10deg) 
+        rotateX(5deg) 
+        translateZ(30px) 
+        scale(1.05);
+    z-index: 10;
+}
+
+/* Enhanced Shadows */
+.shadow-3d-enhanced {
+    box-shadow: 
+        0 10px 20px rgba(0,0,0,0.2),
+        0 6px 6px rgba(0,0,0,0.23),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+.shadow-3d-enhanced:hover {
+    box-shadow: 
+        0 20px 40px rgba(0,0,0,0.3),
+        0 12px 12px rgba(0,0,0,0.23),
+        inset 0 1px 0 rgba(255,255,255,0.2),
+        0 0 30px rgba(255, 215, 0, 0.3);
+}
+
+/* Metallic Effect */
+.metallic {
+    background: linear-gradient(
+        135deg,
+        #FFD700 0%,
+        #FFA500 25%,
+        #FFD700 50%,
+        #FFA500 75%,
+        #FFD700 100%
+    );
+    background-size: 200% 200%;
+    animation: metallic 3s ease infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.metallic::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(255,255,255,0.3) 50%,
+        transparent 70%
+    );
+    animation: shimmer 2s infinite;
+}
+
+@keyframes metallic {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+/* Crystal Effect */
+.crystal {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 215, 0, 0.2) 50%,
+        rgba(255, 255, 255, 0.1) 100%
+    );
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 
+        0 8px 32px rgba(255, 215, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.crystal:hover {
+    box-shadow: 
+        0 12px 40px rgba(255, 215, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transform: translateY(-5px);
+}
+
+/* Responsive 3D Effects */
+@media (max-width: 768px) {
+    .card-3d:hover {
+        transform: perspective(500px) rotateY(2deg) scale(1.02);
+    }
+    
+    .text-3d {
+        text-shadow: 
+            0 1px 0 #B8860B,
+            0 2px 0 #B8860B,
+            0 3px 0 #B8860B,
+            0 4px 0 #B8860B,
+            0 5px 0 #B8860B,
+            0 6px 0 #B8860B,
+            0 7px 0 #B8860B,
+            0 8px 0 #B8860B,
+            0 9px 0 #B8860B,
+            0 10px 0 #B8860B,
+            0 11px 0 #B8860B,
+            0 12px 0 #B8860B,
+            0 15px 20px rgba(0,0,0,0.3);
+    }
+}
